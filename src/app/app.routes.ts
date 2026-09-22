@@ -5,10 +5,10 @@ import { About } from './pages/about/about';
 import { NotFound } from './pages/not-found/not-found';
 
 export const routes: Routes = [
-    { path: '', component: Courses },
+    { path: "", component: Courses },
     { path: "kurser", component: Courses },
     { path: "schema", component: Schedule },
     { path: "om", component: About },
-    { path: '404', component: NotFound },
-    { path: '**', redirectTo: "404", pathMatch: "full"}
+    { path: "404", component: NotFound },
+    { path: "**", redirectTo: "404", pathMatch: "full"}
 ];
