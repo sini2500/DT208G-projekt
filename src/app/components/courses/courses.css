@@ -1,0 +1,28 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.8rem;
+}
+
+th {
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
+th:hover {
+  background-color: #ddd;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+input {
+  padding: 0.5rem;
+  width: 300px;
+}

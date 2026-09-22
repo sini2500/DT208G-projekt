@@ -1,0 +1,45 @@
+<h1>Kurser</h1>
+
+<input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" placeholder="Sök kurs...">
+
+<table>
+
+    <thead>
+        <tr>
+            <th (click)="setSortField('code')">Kurskod</th>
+            <th (click)="setSortField('coursename')">Kursnamn</th>
+            <th (click)="setSortField('progression')">Progression</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @if (loading()) {
+
+        <p>Laddar kurser...</p>
+
+        } @else {
+
+        @for (course of filteredCourses(); track course.code) {
+        <tr>
+            <td>{{ course.code }}</td>
+
+            <td>
+                <a [href]="course.syllabus" target="_blank">{{ course.coursename }}</a>
+            </td>
+
+            <td>{{ course.progression }}</td>
+
+        </tr>
+        }
+        @empty {
+        <tr>
+            <td colspan="3">Inga kurser hittades...</td>
+        </tr>
+        }
+
+        }
+
+    </tbody>
+
+</table>
