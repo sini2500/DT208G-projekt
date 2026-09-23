@@ -22,7 +22,8 @@ td a:hover {
   text-decoration: underline;
 }
 
-input {
+input, select {
   padding: 0.5rem;
   width: 300px;
+  background-color: #fff;
 }

@@ -15,6 +15,7 @@ export class Courses {
 
   searchTerm = signal('');
   sortField = signal<keyof Course>('courseCode');
+  selectedSubject = signal('');
 
   courses; loading; error;
 
@@ -31,8 +32,10 @@ export class Courses {
 
     const term = this.searchTerm().toLowerCase();
     const field = this.sortField();
+    const subject = this.selectedSubject();
 
     return [...this.courses()]
+      .filter(course => !subject || course.subject === subject)
       .filter(course =>
         course.courseCode.toLowerCase().includes(term) ||
         course.courseName.toLowerCase().includes(term)
@@ -46,11 +49,16 @@ export class Courses {
           return valueA - valueB;
         }
 
-        return String(valueA).localeCompare(String(valueB));
+        return String(valueA).localeCompare(String(valueB), 'sv');
       });
   });
 
   setSortField(field: keyof Course): void {
     this.sortField.set(field);
   }
+
+  subjects = computed(() =>
+    [...new Set(this.courses().map(course => course.subject))].sort((a, b) => a.localeCompare(b, 'sv'))
+  );
+
 }

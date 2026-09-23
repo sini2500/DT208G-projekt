@@ -2,7 +2,19 @@
 
 <h1>Kurser</h1>
 
-<input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" placeholder="Sök kurs...">
+<div class="row">
+
+    <input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" placeholder="Sök kurs...">
+
+    <select [ngModel]="selectedSubject()" (ngModelChange)="selectedSubject.set($event)">
+        <option value="">Alla ämnen</option>
+        @for (subject of subjects(); track subject) {
+            <option [value]="subject">{{ subject }}</option>
+        }
+    </select>
+</div>
+
+<p>Tabellen visar {{ filteredCourses().length }} av {{ courses().length }} kurser</p>
 
 <table>
 

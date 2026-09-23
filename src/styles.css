@@ -65,7 +65,7 @@ button:hover {
   background: #f4f4f4;
 }
 
-input {
+input, select {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
