@@ -12,6 +12,9 @@
             <option [value]="subject">{{ subject }}</option>
         }
     </select>
+
+    <button (click)="clearFilters()">Rensa filter</button>
+
 </div>
 
 <p>Tabellen visar {{ filteredCourses().length }} av {{ courses().length }} kurser</p>

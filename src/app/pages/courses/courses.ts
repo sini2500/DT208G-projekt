@@ -61,4 +61,9 @@ export class Courses {
     [...new Set(this.courses().map(course => course.subject))].sort((a, b) => a.localeCompare(b, 'sv'))
   );
 
+  clearFilters(): void {
+    this.searchTerm.set('');
+    this.selectedSubject.set('');
+  }
+
 }
