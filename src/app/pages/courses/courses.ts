@@ -17,6 +17,8 @@ export class Courses {
   searchTerm = signal('');
   sortField = signal<keyof Course>('courseCode');
   selectedSubject = signal('');
+  currentPage = signal(1);
+  pageSize = signal(20);
 
   courses; loading; error;
 
@@ -58,6 +60,52 @@ export class Courses {
     this.sortField.set(field);
   }
 
+  setSearchTerm(term: string): void {
+    this.searchTerm.set(term);
+    this.currentPage.set(1);
+  }
+
+  setSubject(subject: string): void {
+    this.selectedSubject.set(subject);
+    this.currentPage.set(1);
+  }
+
+  setPageSize(size: string): void {
+    this.pageSize.set(Number(size));
+    this.currentPage.set(1);
+  }
+
+  totalPages = computed(() =>
+    Math.max(1, Math.ceil(this.filteredCourses().length / this.pageSize()))
+  );
+
+  pageCourses = computed(() => {
+    const start = (this.currentPage() - 1) * this.pageSize();
+    return this.filteredCourses().slice(start, start + this.pageSize());
+  });
+
+  pageRange = computed(() => {
+
+    const total = this.filteredCourses().length;
+
+    if (total === 0) {
+      return { first: 0, last: 0, total: 0 };
+    }
+
+    const first = (this.currentPage() - 1) * this.pageSize() + 1;
+    const last = Math.min(this.currentPage() * this.pageSize(), total);
+
+    return { first, last, total };
+  });
+
+  previousPage(): void {
+    this.currentPage.update(page => Math.max(1, page - 1));
+  }
+
+  nextPage(): void {
+    this.currentPage.update(page => Math.min(this.totalPages(), page + 1));
+  }
+
   subjects = computed(() =>
     [...new Set(this.courses().map(course => course.subject))].sort((a, b) => a.localeCompare(b, 'sv'))
   );
@@ -65,6 +113,7 @@ export class Courses {
   clearFilters(): void {
     this.searchTerm.set('');
     this.selectedSubject.set('');
+    this.currentPage.set(1);
   }
 
   addToSchedule(course: Course): void {

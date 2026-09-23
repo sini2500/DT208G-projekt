@@ -107,3 +107,7 @@ input, select {
   width: 300px;
   background-color: #fff;
 }
+
+.between {
+  justify-content: space-between;
+}

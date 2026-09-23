@@ -52,4 +52,9 @@ export class ScheduleService {
       localStorage.removeItem(this.localStorageKey);
     }
   }
+
+  clear(): void {
+    this.schedule.set([]);
+    this.save();
+  }
 }

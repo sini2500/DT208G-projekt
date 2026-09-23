@@ -24,4 +24,13 @@ export class Schedule {
   removeFromSchedule(courseCode: string): void {
     this.scheduleService.remove(courseCode);
   }
+
+  clearSchedule(): void {
+    if (!confirm('Vill du tömma hela schemat?')) {
+      return;
+    }
+
+    this.scheduleService.clear();
+  }
+
 }

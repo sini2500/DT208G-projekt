@@ -10,7 +10,11 @@
 
 } @else {
 
-<p>Schemat innehåller {{ schedule().length }} kurser, totalt {{ totalPoints() }} hp</p>
+<div class="row between">
+    <p>Schemat innehåller {{ schedule().length }} kurser, totalt {{ totalPoints() }} hp</p>
+
+    <button type="button" (click)="clearSchedule()">Rensa schemat</button>
+</div>
 
 <table>
 

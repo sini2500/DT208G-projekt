@@ -4,9 +4,9 @@
 
 <div class="row">
 
-    <input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" placeholder="Sök kurs...">
+    <input type="text" [ngModel]="searchTerm()" (ngModelChange)="setSearchTerm($event)" placeholder="Sök kurs...">
 
-    <select [ngModel]="selectedSubject()" (ngModelChange)="selectedSubject.set($event)">
+    <select [ngModel]="selectedSubject()" (ngModelChange)="setSubject($event)">
         <option value="">Alla ämnen</option>
         @for (subject of subjects(); track subject) {
             <option [value]="subject">{{ subject }}</option>
@@ -17,7 +17,26 @@
 
 </div>
 
-<p>Tabellen visar {{ filteredCourses().length }} av {{ courses().length }} kurser</p>
+<div class="row between">
+    <p>
+        @let range = pageRange();
+        @if (range.total === 0) {
+            Inga kurser att visa
+        } @else {
+            Visar {{ range.first }}–{{ range.last }} av {{ range.total }} kurser
+        }
+    </p>
+
+    <label class="page-size">
+        Visa
+        <select [ngModel]="pageSize()" (ngModelChange)="setPageSize($event)">
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        per sida
+    </label>
+</div>
 
 <table>
 
@@ -46,7 +65,7 @@
 
         } @else {
 
-        @for (course of filteredCourses(); track course.courseCode) {
+        @for (course of pageCourses(); track course.courseCode) {
         <tr>
             <td>{{ course.courseCode }}</td>
 
@@ -75,5 +94,23 @@
     </tbody>
 
 </table>
+
+@if (totalPages() > 1) {
+
+<div class="row pagination">
+
+    <button type="button" (click)="previousPage()" [disabled]="currentPage() === 1">
+        Föregående
+    </button>
+
+    <p>Sida {{ currentPage() }} av {{ totalPages() }}</p>
+
+    <button type="button" (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+        Nästa
+    </button>
+
+</div>
+
+}
 
 </section>
