@@ -41,6 +41,10 @@ export class Courses {
         const valueA = a[field];
         const valueB = b[field];
 
+        if (typeof valueA === 'number' && typeof valueB === 'number') {
+          return valueA - valueB;
+        }
+
         return String(valueA).localeCompare(String(valueB));
       });
   });

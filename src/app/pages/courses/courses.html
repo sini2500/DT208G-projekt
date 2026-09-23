@@ -10,7 +10,10 @@
         <tr>
             <th (click)="setSortField('courseCode')">Kurskod</th>
             <th (click)="setSortField('courseName')">Kursnamn</th>
-            <th (click)="setSortField('progression')">Progression</th>
+            <th (click)="setSortField('points')">Poäng</th>
+            <th (click)="setSortField('subject')">Ämne</th>
+            <th>Kursplan</th>
+            <th>Lägg till</th>
         </tr>
     </thead>
 
@@ -18,7 +21,9 @@
 
         @if (loading()) {
 
-        <p>Laddar kurser...</p>
+        <tr>
+            <td colspan="6">Laddar kurser...</td>
+        </tr>
 
         } @else {
 
@@ -26,17 +31,24 @@
         <tr>
             <td>{{ course.courseCode }}</td>
 
+            <td>{{ course.courseName }}</td>
+
+            <td>{{ course.points }}</td>
+
+            <td>{{ course.subject }}</td>
+
             <td>
-                <a [href]="course.syllabus" target="_blank">{{ course.courseName }}</a>
+                <a [href]="course.syllabus" target="_blank">Kursplan</a>
             </td>
 
-            <td>{{ course.progression }}</td>
+            <td><button>Lägg till</button></td>
+
 
         </tr>
         }
         @empty {
         <tr>
-            <td colspan="3">Inga kurser hittades...</td>
+            <td colspan="6">Inga kurser hittades...</td>
         </tr>
         }
 
