@@ -52,23 +52,20 @@ hr, p, h2 {
 }
 
 button {
-  padding: 1rem;
+  padding: 0.5rem;
   border: 1px solid #333;
   border-radius: 0.75rem;
   background: white;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s ease;
+  max-width: 120px;
+  text-wrap-mode: nowrap;
+  font-size: smaller;
 }
 
 button:hover {
   background: #f4f4f4;
-}
-
-input, select {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
 }
 
 .row {
@@ -77,4 +74,36 @@ input, select {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.8rem;
+}
+
+th {
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
+th:hover {
+  background-color: #ddd;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+input, select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  width: 300px;
+  background-color: #fff;
 }

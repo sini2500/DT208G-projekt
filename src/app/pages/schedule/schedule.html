@@ -1,1 +1,56 @@
-<p>schedule works!</p>
+<section>
+
+<h1>Mitt schema</h1>
+
+@if (schedule().length === 0) {
+
+<p>Inga kurser i schemat.</p>
+
+<p><a routerLink="/kurser">Gå till kurslistan för att lägga till kurser</a></p>
+
+} @else {
+
+<p>Schemat innehåller {{ schedule().length }} kurser, totalt {{ totalPoints() }} hp</p>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Kurskod</th>
+            <th>Kursnamn</th>
+            <th>Poäng</th>
+            <th>Ämne</th>
+            <th>Ta bort</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @for (course of schedule(); track course.courseCode) {
+        <tr>
+            <td>{{ course.courseCode }}</td>
+
+            <td>{{ course.courseName }}</td>
+
+            <td>{{ course.points }}</td>
+
+            <td>{{ course.subject }}</td>
+
+            <td><button (click)="removeFromSchedule(course.courseCode)">Ta bort</button></td>
+
+        </tr>
+        }
+
+        <tr>
+            <td colspan="2">Totalt</td>
+            <td>{{ totalPoints() }} hp</td>
+            <td colspan="2"></td>
+        </tr>
+
+    </tbody>
+
+</table>
+
+}
+
+</section>

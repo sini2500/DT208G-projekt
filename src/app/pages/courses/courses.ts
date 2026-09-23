@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Course } from '../../interfaces/course';
 import { CourseService } from '../../services/courses';
+import { ScheduleService } from '../../services/schedule';
 
 @Component({
   selector: 'app-courses',
@@ -19,7 +20,7 @@ export class Courses {
 
   courses; loading; error;
 
-  constructor(private courseService: CourseService) {
+  constructor(private courseService: CourseService, private scheduleService: ScheduleService) {
 
     this.courses = this.courseService.courses;
     this.loading = this.courseService.loading;
@@ -64,6 +65,10 @@ export class Courses {
   clearFilters(): void {
     this.searchTerm.set('');
     this.selectedSubject.set('');
+  }
+
+  addToSchedule(course: Course): void {
+    this.scheduleService.add(course);
   }
 
 }
