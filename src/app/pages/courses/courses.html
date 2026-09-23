@@ -8,8 +8,8 @@
 
     <thead>
         <tr>
-            <th (click)="setSortField('code')">Kurskod</th>
-            <th (click)="setSortField('coursename')">Kursnamn</th>
+            <th (click)="setSortField('courseCode')">Kurskod</th>
+            <th (click)="setSortField('courseName')">Kursnamn</th>
             <th (click)="setSortField('progression')">Progression</th>
         </tr>
     </thead>
@@ -22,12 +22,12 @@
 
         } @else {
 
-        @for (course of filteredCourses(); track course.code) {
+        @for (course of filteredCourses(); track course.courseCode) {
         <tr>
-            <td>{{ course.code }}</td>
+            <td>{{ course.courseCode }}</td>
 
             <td>
-                <a [href]="course.syllabus" target="_blank">{{ course.coursename }}</a>
+                <a [href]="course.syllabus" target="_blank">{{ course.courseName }}</a>
             </td>
 
             <td>{{ course.progression }}</td>

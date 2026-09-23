@@ -14,7 +14,7 @@ import { CourseService } from '../../services/courses';
 export class Courses {
 
   searchTerm = signal('');
-  sortField = signal<keyof Course>('code');
+  sortField = signal<keyof Course>('courseCode');
 
   courses; loading;
 
@@ -33,15 +33,15 @@ export class Courses {
 
     return [...this.courses()]
       .filter(course =>
-        course.code.toLowerCase().includes(term) ||
-        course.coursename.toLowerCase().includes(term)
+        course.courseCode.toLowerCase().includes(term) ||
+        course.courseName.toLowerCase().includes(term)
       )
       .sort((a, b) => {
 
-        const valueA = a[field].toLowerCase();
-        const valueB = b[field].toLowerCase();
+        const valueA = a[field];
+        const valueB = b[field];
 
-        return valueA.localeCompare(valueB);
+        return String(valueA).localeCompare(String(valueB));
       });
   });
 
