@@ -16,12 +16,13 @@ export class Courses {
   searchTerm = signal('');
   sortField = signal<keyof Course>('courseCode');
 
-  courses; loading;
+  courses; loading; error;
 
   constructor(private courseService: CourseService) {
 
     this.courses = this.courseService.courses;
     this.loading = this.courseService.loading;
+    this.error = this.courseService.error;
 
     this.courseService.loadCourses();
   }

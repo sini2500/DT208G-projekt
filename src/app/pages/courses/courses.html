@@ -19,6 +19,10 @@
 
     <tbody>
 
+        @if (error()) {
+            <td colspan="6">{{ error() }}</td>
+        }
+
         @if (loading()) {
 
         <tr>
@@ -42,7 +46,6 @@
             </td>
 
             <td><button>Lägg till</button></td>
-
 
         </tr>
         }
