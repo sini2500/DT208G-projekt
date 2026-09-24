@@ -57,7 +57,7 @@
         <tr>
             <td colspan="6" class="error">{{ error() }}</td>
         </tr>
-        }
+        } @else {
 
         @if (loading()) {
 
@@ -89,6 +89,8 @@
         <tr>
             <td colspan="6">Inga kurser hittades...</td>
         </tr>
+        }
+
         }
 
         }
