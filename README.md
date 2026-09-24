@@ -4,7 +4,7 @@ En webbplats för ett fiktivt lärosäte, byggd som projektuppgift i kursen **Pr
 
 Studenter kan söka, filtrera och sortera bland lärosätets kursutbud och sätta ihop ett eget ramschema som sparas i webbläsaren.
 
-**Publicerad webbplats:** [länk]
+**Publicerad webbplats:** https://dt208g-projekt-sini2500.netlify.app
 
 ## Funktioner
 
@@ -20,6 +20,17 @@ Studenter kan söka, filtrera och sortera bland lärosätets kursutbud och sätt
 - **Tydlig feedback** när användaren lägger till och tar bort kurser från schemat.
 
 Kursdatan består av 4328 kurser och läses in från JSON i `public/miun_courses.json`.
+
+## Betygsmål
+
+Projektet siktar på överbetyg.
+
+Alla grundkrav är uppfyllda, och dessa extrafunktioner byggts:
+- Paginering
+- Startsida med statistik
+- Toast-meddelanden när knappar klickas
+- Knappstatus för redan tillagda kurser
+- Rensa filter / töm schema
 
 ## Teknik
 
