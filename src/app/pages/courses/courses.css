@@ -10,3 +10,7 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.pagination {
+  margin-top: 1rem;
+}

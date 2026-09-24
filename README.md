@@ -4,7 +4,7 @@ En webbplats för ett fiktivt lärosäte, byggd som projektuppgift i kursen **Pr
 
 Studenter kan söka, filtrera och sortera bland lärosätets kursutbud och sätta ihop ett eget ramschema som sparas i webbläsaren.
 
-**Publicerad webbplats:** https://dt208g-projekt-sini2500.netlify.app
+**Publicerad på Netlify:** https://dt208g-projekt-sini2500.netlify.app
 
 ## Funktioner
 
@@ -28,7 +28,7 @@ Projektet siktar på överbetyg.
 Alla grundkrav är uppfyllda, och dessa extrafunktioner byggts:
 - Paginering
 - Startsida med statistik
-- Toast-meddelanden när knappar klickas
+- Toast-meddelanden när knappar klickas (nere i högra hörnet, lite dolda på Netlify-demo)
 - Knappstatus för redan tillagda kurser
 - Rensa filter / töm schema
 
@@ -52,7 +52,7 @@ Alla grundkrav är uppfyllda, och dessa extrafunktioner byggts:
 - `/om`    : Information om projektet
 - `/*`     : 404-sida
 
-## Testa projektet
+## Testa projektet lokalt
 
 ```
 npm install
