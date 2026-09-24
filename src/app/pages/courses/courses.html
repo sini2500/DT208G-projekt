@@ -42,10 +42,10 @@
 
     <thead>
         <tr>
-            <th (click)="setSortField('courseCode')">Kurskod</th>
-            <th (click)="setSortField('courseName')">Kursnamn</th>
-            <th (click)="setSortField('points')">Poäng</th>
-            <th (click)="setSortField('subject')">Ämne</th>
+            <th (click)="setSortField('courseCode')">Kurskod <span>{{ sortField() === 'courseCode' ? (sortAscending() ? '▲' : '▼') : '' }}</span></th>
+            <th (click)="setSortField('courseName')">Kursnamn <span>{{ sortField() === 'courseName' ? (sortAscending() ? '▲' : '▼') : '' }}</span></th>
+            <th (click)="setSortField('points')">Poäng <span>{{ sortField() === 'points' ? (sortAscending() ? '▲' : '▼') : '' }}</span></th>
+            <th (click)="setSortField('subject')">Ämne <span>{{ sortField() === 'subject' ? (sortAscending() ? '▲' : '▼') : '' }}</span></th>
             <th>Kursplan</th>
             <th>Lägg till</th>
         </tr>

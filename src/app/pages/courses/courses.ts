@@ -17,6 +17,7 @@ export class Courses {
 
   searchTerm = signal('');
   sortField = signal<keyof Course>('courseCode');
+  sortAscending = signal(true);
   selectedSubject = signal('');
   currentPage = signal(1);
   pageSize = signal(20);
@@ -37,6 +38,8 @@ export class Courses {
     const term = this.searchTerm().toLowerCase();
     const field = this.sortField();
     const subject = this.selectedSubject();
+    const ascending = this.sortAscending();
+    const direction = ascending ? 1 : -1;
 
     return [...this.courses()]
       .filter(course => !subject || course.subject === subject)
@@ -50,15 +53,23 @@ export class Courses {
         const valueB = b[field];
 
         if (typeof valueA === 'number' && typeof valueB === 'number') {
-          return valueA - valueB;
+          return (valueA - valueB) * direction;
         }
 
-        return String(valueA).localeCompare(String(valueB), 'sv');
+        return String(valueA).localeCompare(String(valueB), 'sv') * direction; // Multiplicera med 1 eller -1 för att eventuellt vända sorteringen.
       });
   });
 
   setSortField(field: keyof Course): void {
+
+    // om fältet redan är valt sortField, vänd på ordningen och return
+    if (this.sortField() === field) {
+      this.sortAscending.update(ascending => !ascending);
+      return;
+    }
+
     this.sortField.set(field);
+    this.sortAscending.set(true);
   }
 
   setSearchTerm(term: string): void {

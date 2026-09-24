@@ -4,10 +4,3 @@
     color: white;
     padding: 0.5rem 0;
 }
-
-/* responsive */
-@media (max-width: 900px) {
-  .footer .container{
-    margin: 0 2rem;
-  }
-}
