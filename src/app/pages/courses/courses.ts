@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Course } from '../../interfaces/course';
 import { CourseService } from '../../services/courses';
 import { ScheduleService } from '../../services/schedule';
+import { ToastService } from '../../services/toast';
 
 @Component({
   selector: 'app-courses',
@@ -22,7 +23,7 @@ export class Courses {
 
   courses; loading; error;
 
-  constructor(private courseService: CourseService, private scheduleService: ScheduleService) {
+  constructor(private courseService: CourseService, private scheduleService: ScheduleService, private toastService: ToastService) {
 
     this.courses = this.courseService.courses;
     this.loading = this.courseService.loading;
@@ -117,7 +118,21 @@ export class Courses {
   }
 
   addToSchedule(course: Course): void {
+
+    const alreadyAdded = this.scheduleService.schedule().some(c => c.courseCode === course.courseCode);
+
     this.scheduleService.add(course);
+
+    this.toastService.show(alreadyAdded ? `${course.courseCode} finns redan i schemat` : `${course.courseCode} tillagd i schemat`);
+
+  }
+
+  scheduledCodes = computed(() =>
+    new Set(this.scheduleService.schedule().map(course => course.courseCode))
+  );
+
+  isScheduled(courseCode: string): boolean {
+    return this.scheduledCodes().has(courseCode);
   }
 
 }

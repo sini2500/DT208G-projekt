@@ -6,4 +6,8 @@
   </div>
 </main>
 
+@if (toast.message()) {
+<p class="toast" role="status">{{ toast.message() }}</p>
+}
+
 <app-footer />

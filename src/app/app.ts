@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 
 import { Header } from './partials/header/header';
 import { Footer } from './partials/footer/footer';
+import { ToastService } from './services/toast';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,5 @@ import { Footer } from './partials/footer/footer';
 })
 export class App {
   protected readonly title = signal('Kurslistan');
+  constructor(public toast: ToastService) { }
 }

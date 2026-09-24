@@ -54,7 +54,9 @@
     <tbody>
 
         @if (error()) {
-            <td colspan="6">{{ error() }}</td>
+        <tr>
+            <td colspan="6" class="error">{{ error() }}</td>
+        </tr>
         }
 
         @if (loading()) {
@@ -79,7 +81,7 @@
                 <a [href]="course.syllabus" target="_blank">Kursplan</a>
             </td>
 
-            <td><button (click)="addToSchedule(course)">Lägg till</button></td>
+            <td><button (click)="addToSchedule(course)" [disabled]="isScheduled(course.courseCode)">{{ isScheduled(course.courseCode) ? 'Tillagd' : 'Lägg till' }}</button></td>
 
         </tr>
         }
