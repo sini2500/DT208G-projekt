@@ -1,0 +1,66 @@
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>NUIM Universitet</h1>
+
+        <p>Här har vi samlat hela kursutbudet på ett ställe. Sök bland kurser, filtrera efter ämne och sätt ihop ditt eget ramschema inför terminsstart.</p>
+
+        <div class="row">
+            <button routerLink="/kurser">Alla kurser</button>
+            <button routerLink="/schema">Mitt schema</button>
+        </div>
+
+    </div>
+
+    <img class="hero-image" src="img/CF017257.IIQ.p.jpg" alt="Två studenter kodar framför en skärm">
+
+</section>
+
+@if (courses().length) {
+
+<section class="row between">
+
+    <h2>Kursutbudet i siffror</h2>
+
+    <div class="stats">
+
+        <div class="col">
+            <span class="stat-number">{{ totalCourses() }}</span>
+            <span>kurser</span>
+        </div>
+
+        <div class="col">
+            <span class="stat-number">{{ subjects().length }}</span>
+            <span>ämnen</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2>De största ämnena</h2>
+
+    <div class="subject-list">
+
+        @for (item of topSubjects(); track item.subject) {
+        <div class="subject-row">
+
+            <span class="subject-name">{{ item.subject }}</span>
+
+            <span class="bar">
+                <span class="bar-fill" [style.width.%]="item.percent"></span>
+            </span>
+
+            <span class="subject-count">{{ item.count }}</span>
+
+        </div>
+        }
+
+    </div>
+
+</section>
+
+}

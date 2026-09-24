@@ -47,6 +47,10 @@ a {
     color: inherit;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 hr, p, h2 {
   margin: 1rem 0;
 }
@@ -74,6 +78,11 @@ button:hover {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.col {
+  display:flex;
+  flex-direction: column;
 }
 
 table {
