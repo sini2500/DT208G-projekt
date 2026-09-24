@@ -1,59 +1,51 @@
-# Kurslistan
+# KursListan – NUIM Universitet
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.24.
+En webbplats för ett fiktivt lärosäte, byggd som projektuppgift i kursen **Programmering i TypeScript (DT208G)** på Mittuniversitetet.
 
-## Development server
+Studenter kan söka, filtrera och sortera bland lärosätets kursutbud och sätta ihop ett eget ramschema som sparas i webbläsaren.
 
-To start a local development server, run:
+**Publicerad webbplats:** [länk]
 
-```bash
-ng serve
+## Funktioner
+
+- **Sökning** på kurskod och kursnamn.
+- **Filtrering** på ämne, plus knapp för att rensa filter.
+- **Sortering** på kurskod, kursnamn, poäng och ämne, både stigande och fallande.
+- **Paginering** med 20, 50 eller 100 kurser per sida.
+- **Antal träffar** för aktuellt urval, t.ex. "1–20 av 4328 kurser".
+- **Ramschema** där kurser läggs till och tas bort, med summering av antal poäng. Dubletter går inte att lägga till.
+- **localStorage** används för att spara schemat så det är kvar när sidan laddas om.
+- **Startsida** med statistik om hur många kurser det finns och populära ämnen.
+- **Responsiv design** som fungerar på mobil, surfplatta och stora skärmar.
+- **Tydlig feedback** när användaren lägger till och tar bort kurser från schemat.
+
+Kursdatan består av 4328 kurser och läses in från JSON i `public/miun_courses.json`.
+
+## Teknik
+
+- **Angular** med komponenter
+- **TypeScript**
+- **Signaler och `computed`** för att klura ut värden och göra dem tillgängliga
+- **Routing** med `RouterOutlet` och `routerLink`
+- **Tjänster** för de viktiga funktionerna:
+  - `CourseService` – hämtar kursdatan
+  - `ScheduleService` – hanterar ramschemat och localStorage
+  - `ToastService` – visar tillfälliga meddelanden
+- **localStorage** för att spara ramschemat mellan besök
+
+## Sidor
+
+- `/`      : Startsida med statistik om kurserna
+- `/kurser`: Kurslistan med sökning, filter, sortering och paginering
+- `/schema`: Ramschemat med poäng och borttagning
+- `/om`    : Information om projektet
+- `/*`     : 404-sida
+
+## Testa projektet
+
+```
+npm install
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Öppna `http://localhost:4200/`.

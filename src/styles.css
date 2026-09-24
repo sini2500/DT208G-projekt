@@ -4,7 +4,6 @@
   --color-accent: #f2a900;
   --color-bg: #f5f6f8;
   --color-text: #22252a;
-  --color-card: #ffffff;
   --radius: 0.75rem;
 }
 
@@ -41,7 +40,7 @@ section {
   padding: 2rem;
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  background-color: var(--color-card);
+  background-color: #fff;
 }
 
 /* elements */
@@ -84,8 +83,8 @@ hr, p {
 button {
   padding: 0.5rem;
   border: 1px solid var(--color-primary);
-  border-radius: 0.75rem;
-  background: white;
+  border-radius: var(--radius);
+  background: #fff;
   font-size: 0.75rem;
   cursor: pointer;
   transition: background 0.2s ease;
