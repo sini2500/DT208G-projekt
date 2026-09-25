@@ -12,6 +12,5 @@ import { ToastService } from './services/toast';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('Kurslistan');
   constructor(public toast: ToastService) { }
 }

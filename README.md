@@ -1,6 +1,6 @@
-# KursListan – NUIM Universitet
+# NUIM Universitet
 
-En webbplats för ett fiktivt lärosäte, byggd som projektuppgift i kursen **Programmering i TypeScript (DT208G)** på Mittuniversitetet.
+En kurskatalog för ett fiktivt lärosäte, byggd som projektuppgift i kursen **Programmering i TypeScript (DT208G)** på Mittuniversitetet.
 
 Studenter kan söka, filtrera och sortera bland lärosätets kursutbud och sätta ihop ett eget ramschema som sparas i webbläsaren.
 
